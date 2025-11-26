@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1 - My Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding-bottom: 40px;
+        }
+
+        .title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 800px;
+            padding: 2.5em;
+            border-radius: 15px;
+            position: relative;
+            color: white;
+            background-color: #1c1f2b;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @property --angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .card::after, .card::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: conic-gradient(from var(--angle), #4285F4, #EA4335, #FBBC04, #34A853, #4285F4);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 3px;
+            border-radius: 15px;
+            animation: 4s spin linear infinite;
+        }
+
+        .card::before {
+            filter: blur(1.5rem);
+            opacity: 0.7;
+        }
+
+        @keyframes spin {
+            from {
+                --angle: 0deg;
+            }
+            to {
+                --angle: 360deg;
+            }
+        }
+
+        .game-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #4285F4, #EA4335);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: clamp(16px, 2vw, 20px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .game-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .game-link:active {
+            transform: translateY(0);
+        }
+
+        .card p {
+            font-size: clamp(15px, 2vw, 18px);
+            line-height: 1.8;
+            text-align: left;
+            color: #e0e0e0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            margin-bottom: 20px;
+        }
+
+        .card strong {
+            color: #FBBC04;
+            font-size: clamp(18px, 2.5vw, 22px);
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card a {
+            color: #4285F4;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .card a:hover {
+            color: #EA4335;
+        }
+
+        .back-button {
+            font-family: "Open Sans", sans-serif;
+            font-size: clamp(14px, 2vw, 16px);
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            cursor: pointer;
+            border: 3px solid #000;
+            padding: 0.75em 1.5em;
+            box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            background-color: #fff;
+            transition: all 0.1s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .back-button:active {
+            box-shadow: 0px 0px 0px 0px;
+            top: 5px;
+            left: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 1.5em;
+            }
+
+            .game-link {
+                padding: 12px 24px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                gap: 20px;
+            }
+
+            .card p {
+                font-size: 15px;
+            }
+        }
+
+        /* Landscape orientation */
+        @media (orientation: landscape) and (max-height: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                gap: 15px;
+                padding-bottom: 20px;
+            }
+
+            .card {
+                padding: 1.5em;
+            }
+
+            .card p {
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+
+            .card strong {
+                margin-top: 15px;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">My Game</h1>
+        
+        <a href="https://gd.games/games/c6081d1a-e4db-405d-ba76-5d3ce3790a06" class="game-link" target="_blank">
+            Play My Game
+        </a>
+
+        <a href="https://docs.google.com/document/d/1Y52KtfB8_gMq65ZkGxpBw3cZhBY9gwogSFw8z7BDteA/edit?usp=sharing" class="game-link" target="_blank" style="background: linear-gradient(135deg, #34A853, #FBBC04);">
+            My Reflection
+        </a>
+
+        <div class="card">
+            <p>My game development journey started with an idea : 
+<a href="https://docs.google.com/document/d/1AoYkYsDz2H51y1DYqLOP6rhGWD4EyFg7LMvbaCKAhzI/edit?usp=sharing" target="_blank">https://docs.google.com/document/d/1AoYkYsDz2H51y1DYqLOP6rhGWD4EyFg7LMvbaCKAhzI/edit?usp=sharing</a> (First Idea)</p>
+
+            <p>Then I started.</p>
+
+            <p>Eventually i saw that everything was taking too much time so i deleted the game and started from a template but from the amount of time left i tried to add many ideas that first came to my head. This resulted in more time being spent on feature rather than the actual game itself. Then i decided to watch a tutorial. I followed through and decided to use my own sprites. Eventually i made a game with the help of a few tutorials and i hade a few friends to test it before publishing it to the website.</p>
+
+            <strong>Most Rewarding</strong>
+            <p>The most rewarding part of the development of the game was the final product. The final game that finally works and didnt take me long to make and people seemed to like it and the games met my requirements such as being difficult but not too much but also entertaining. I was expecting a bigger game like those popular games but then i realised that it takes time and money to make games like that. In the end even i found the game fun and its not too repetitive because it eventually gets harder but this is the most rewarding part in my opinion.</p>
+
+            <strong>Most Challenging</strong>
+            <p>The most challenging part of the development of the game was transforming all ideas into the game which resulted in multiple prototype games. I had many ideas which i wanted to use and that was hard to do because of the limited amount of resources like gdevelop, the software i used for making the games. This resulted in me doing last minutes adjustments only to dump these ideas and start afresh.</p>
+
+            <strong>If you were to do this again, what would you do differently?</strong>
+            <p>If i were to do things differently, i would have sticked to a simpler idea to save time for later updates as i know myself and i would want to add features before making the actual games. Also using my time efficiently as i know that sometimes i would spend too much time or too less time so that interfered with my schedule. Next time i would either do another skill or use a different software or using my programming skills to make a game myself.</p>
+
+            <strong>Time management/Goal setting</strong>
+            <p>The time management was one of my issues. Most of the times i would work on the game at home and i would usually do it after doing homework and revising or on a weekend. But sometimes i would get too obsessed and work on it too much which led to many problems like not having enough time for tests or homeworks, or even to be productive and ditching ideas last minute as i didnt have enough time.</p>
+
+            <p>I managed to reach my goal in making a game but the journey should have taken less time if it wasnt for my bad time management. Unfortunately i would have added more stuff but atleast i finished it.</p>
+        </div>
+
+        <a href="index.html" class="back-button">← Back to Home</a>
+    </div>
+</body>
+</html>
