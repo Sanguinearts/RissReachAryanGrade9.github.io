@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riss Reach | Energy Poverty</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #f8f8f8;
+            color: #1c1f2b;
+            line-height: 1.6;
+            padding: 24px 20px 48px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #EA4335;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: bold;
+            color: #4285F4;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: clamp(15px, 2vw, 17px);
+            color: #5f6368;
+            max-width: 52ch;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .action-link {
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            border: 3px solid #000;
+            padding: 0.7em 1.2em;
+            background-color: #fff;
+            box-shadow: 2px 2px 0 #000;
+            transition: background-color 0.15s, transform 0.1s;
+        }
+
+        .action-link:hover {
+            background-color: #f0f0f0;
+        }
+
+        .action-link:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 24px;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            font-size: clamp(15px, 2vw, 16px);
+            color: #d2d5da;
+            margin-bottom: 0;
+        }
+
+        .intro-image {
+            width: 100%;
+            border-radius: 8px;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            display: block;
+        }
+
+        .card {
+            background-color: #1c1f2b;
+            color: #e8eaed;
+            border-radius: 10px;
+            padding: 2em;
+            margin-bottom: 20px;
+            border-left: 4px solid #34A853;
+        }
+
+        .card h2 {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            font-size: clamp(15px, 2vw, 16px);
+            margin-bottom: 14px;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card a {
+            color: #8ab4f8;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .card a:hover {
+            color: #FBBC04;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h3 {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FBBC04;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .section p {
+            color: #d2d5da;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .fact {
+            background-color: rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .fact strong {
+            display: block;
+            font-size: 20px;
+            color: #34A853;
+            margin-bottom: 4px;
+        }
+
+        .fact span {
+            font-size: 12px;
+            color: #9aa0a6;
+            line-height: 1.4;
+        }
+
+        .back-button {
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            border: 3px solid #000;
+            padding: 0.75em 1.5em;
+            box-shadow: 2px 2px 0 #000;
+            background-color: #fff;
+            display: inline-block;
+            margin-top: 8px;
+            transition: background-color 0.15s, transform 0.1s;
+        }
+
+        .back-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .back-button:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 16px 40px;
+            }
+
+            .card {
+                padding: 1.5em;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .action-link {
+                text-align: center;
+            }
+
+            .intro {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image {
+                max-width: 280px;
+                justify-self: center;
+            }
+
+            .facts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <p class="eyebrow">Creativity · Impact Project</p>
+            <h1 class="title">Energy Poverty</h1>
+        </header>
+
+        <nav class="actions" aria-label="Project links">
+            <a href="https://oreoworldconquerer.github.io/oreoworlconquerer.github.io-EnergyEngineering/" class="action-link" target="_blank" rel="noopener noreferrer">View project site</a>
+            <a href="https://youtu.be/5wjE233JdzY" class="action-link" target="_blank" rel="noopener noreferrer">Watch prototype</a>
+        </nav>
+
+        <article class="card">
+            <div class="intro">
+                <div class="intro-text">
+                    <h2>About the project</h2>
+                    <p>
+                        My project is about energy poverty since it is a topic that people ignore, even though they still know about its presence. Energy poverty is when a household is unable to afford or access electricity, and this happens in many places such as Africa (especially Sub-Saharan Africa) and Asia. I made a prototype piezoelectric tile to inspire students to make a change in the world. Now, you might be thinking, "Isn't that what Japan made?" Well, my idea was combining multiple sources like walking, rain, and vibrations to generate electricity, and an Arduino was used to capture and display the voltage.
+                    </p>
+                </div>
+                <img src="assets/energy-poverty.png" alt="Person walking on illuminated piezoelectric floor tiles" class="intro-image" width="200" height="auto">
+            </div>
+
+            <div class="facts" aria-label="Key statistics">
+                <div class="fact">
+                    <strong>600M+</strong>
+                    <span>people in Africa without reliable electricity</span>
+                </div>
+                <div class="fact">
+                    <strong>3 sources</strong>
+                    <span>footsteps, rain, and vibrations combined in one tile</span>
+                </div>
+                <div class="fact">
+                    <strong>Arduino</strong>
+                    <span>monitors voltage in real time during tests</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="card">
+            <h2>Reflection - Creativite Impact project</h2>
+            <p>
+                During this project, I learned that creativity is something that can be used to solve a lot of issues in the world. For example, I decided to address the problem of energy poverty because there are many communities that do not have access to electricity. During my research, I discovered that electricity can be produced through the piezoelectric effect and I then developed a prototype that is able to generate electricity from physical interactions while aiming for generating electricity from wasted energy such as footsteps, rain, vibrations, etc.
+            </p>
+            <p>
+                Therefore, my first achievement of this project is that I enhanced my research skills and I was able to use the information I got to create a working prototype. Instead of basing my research on websites, I used educational articles and reports published by the International Energy Agency to obtain more reliable information about the issue of energy poverty and possible solutions. I am proud that I was able to conduct a lot of research and develop a working prototype based on the data I found.
+            </p>
+            <p>
+                The project also taught me how to think from the perspective of an engineer. I tried to imagine what my creation would look like, how it would be assembled with the use of an Arduino and other components, and how I could make it better. I also realized that being an engineer means engaging in a loop of building, designing and refining a prototype and keep trying until you make a working prototype that is efficient and visually appealing. If I had the opportunity to improve my project, I would try to build a bigger prototype and collect more data on the amount of electricity that can be generated by it.
+            </p>
+            <p>
+                So, I think that this project allowed me to grow as a researcher and an engineer. It gave me an opportunity to improve my research skills, engage in critical thinking, and make a meaningful project. It also made me realise that I want to make a difference in the world by addressing such issues as energy poverty and promoting the use of unique kinds of renewable energy sources.
+            </p>
+        </article>
+
+        <a href="index.html" class="back-button">← Back to home</a>
+    </div>
+</body>
+</html>
